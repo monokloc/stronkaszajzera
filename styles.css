@@ -1,0 +1,461 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #ff8ae2;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Główne tło – można zmienić na własny plik */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('tlo.png') center/cover no-repeat;
+    filter: blur(8px);
+    opacity: 0.6;
+    animation: waveAnimation 6s infinite linear alternate;
+    z-index: -1;
+}
+
+/* Animacja falującego efektu */
+@keyframes waveAnimation {
+    0% {
+        transform: translateY(-10px) scale(1);
+    }
+    50% {
+        transform: translateY(10px) scale(1.02);
+    }
+    100% {
+        transform: translateY(-10px) scale(1);
+    }
+}
+
+header {
+    padding: 50px 20px;
+    background: rgba(0, 0, 0, 0);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: fadeInDown 1s ease-out forwards;
+}
+
+/* Animacja pojawiania się nagłówka */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1, p {
+    display: inline-block;
+    font-size: 3rem;
+    color: #ff6ec4;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: scale(0.8);
+    animation: textSpread 1s ease-out forwards;
+}
+
+/* Animacja rozchodzenia się napisów po wejściu */
+@keyframes textSpread {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+        letter-spacing: -5px;
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        letter-spacing: 2px;
+    }
+}
+
+/* Efekt "eksplozji" tekstu po najechaniu */
+h1:hover, p:hover {
+    color: #ff3a9e;
+    letter-spacing: 5px;
+    text-shadow: 4px 4px 10px rgba(255, 110, 196, 0.7);
+    transition: 0.3s ease-in-out;
+}
+
+.invite-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: #ff6ec4;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+/* Efekt najechania na przycisk */
+.invite-btn:hover {
+    background: #ff3a9e;
+    transform: scale(1.1);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 50px 20px;
+}
+
+.box {
+    width: 300px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 1s ease-out;
+}
+
+/* Animacja pojawiania się ramek */
+.box.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Efekt najechania na ramki */
+.box:hover {
+    transform: translateY(-30px) scale(1.05);
+    box-shadow: 0px 10px 20px rgba(255, 110, 196, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efekt najechania na tekst w ramkach */
+.box:hover p {
+    color: #ff6ec4;
+    transition: 0.3s;
+}
+
+/* Animacja wchodzenia ramek */
+@keyframes slideIn {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* autor */
+.author-box {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+    font-size: 14px;
+    width: 230px;
+    text-align: center;
+    transform: translateX(-40px);
+    opacity: 0;
+    transition: all 0.8s ease-out;
+}
+
+/* Efekt pojawiania się */
+.author-box.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.author-box h3 {
+    margin: 0 0 5px;
+    font-size: 16px;
+    color: #ff6ec4;
+}
+
+.author-box p {
+    margin: 4px 0;
+    font-size: 13px;
+    color: #ddd;
+}
+
+/* Social linki */
+.social-links {
+    margin-top: 8px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 4px;
+    padding: 5px 8px;
+    color: #ff6ec4;
+    text-decoration: none;
+    font-size: 13px;
+    border-radius: 6px;
+    transition: 0.3s;
+    background: rgba(255, 110, 196, 0.2);
+}
+
+.social-links a:hover {
+    background: #ff3a9e;
+    color: white;
+    transform: scale(1.1);
+}
+
+/*emotka obok nicku szajzer*/
+.emote {
+    width: 20px; /* Zmień na rozmiar, który pasuje */
+    height: 20px;
+    vertical-align: middle; /* Wyrównanie do tekstu */
+    margin-right: 5px;
+    border-radius: 50%; /* Zaokrąglenie, jeśli emotka ma być okrągła */
+}
+
+/*zdjecie toolsow*/
+.tools-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.tools-list li {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    border-radius: 10px;
+    margin: 5px 0;
+    transition: background 0.3s;
+}
+
+.tools-list li:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Stylizacja obrazka */
+.box-img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Powiększanie obrazka po kliknięciu */
+.box-img:hover {
+    transform: scale(1.05);
+}
+
+
+/*2 box*/
+.box {
+    background: rgba(0, 0, 0, 0.7); /* Ciemne tło z lekkim blurem */
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.box:hover {
+    transform: scale(1.05);
+}
+
+.title {
+    font-size: 22px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.rocket {
+    font-size: 26px;
+}
+
+.hosting-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.hosting-list li {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    border-radius: 10px;
+    margin: 5px 0;
+    transition: background 0.3s;
+}
+
+.hosting-list li:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/*3 ramka*/
+.gear {
+    font-size: 26px;
+}
+
+.projects-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.projects-list li {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    border-radius: 10px;
+    margin: 5px 0;
+    transition: background 0.3s;
+}
+
+.projects-list li:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/*ramka dla filmu*/
+.content {
+    min-height: 100vh; /* Upewnia się, że inne sekcje zajmują całą stronę */
+}
+
+.video-box {
+    width: 90%;
+    max-width: 1200px;
+    background: rgba(0, 0, 0, 0.9); /* Czarne tło z lekką przezroczystością */
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2); /* Delikatna poświata */
+    margin: 50px auto; /* Duży odstęp od innych sekcji */
+}
+
+.video-container {
+    width: 100%;
+    height: 600px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    width: 80%;
+    height: 80%;
+    border-radius: 15px;
+}
+
+/*ramka dla filmu 2*/
+.content {
+    min-height: 100vh; /* Upewnia się, że inne sekcje zajmują całą stronę */
+}
+
+.video-box2 {
+    width: 90%;
+    max-width: 1500px;
+    background: rgba(0, 0, 0, 0.9); /* Czarne tło z lekką przezroczystością */
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2); /* Delikatna poświata */
+    margin: 50px auto; /* Duży odstęp od innych sekcji */
+}
+
+.video-container {
+    width: 100%;
+    height: 600px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+/* Ukrycie paska przewijania dla Chrome, Safari i Edge */
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+/* Ukrycie paska przewijania dla Firefox */
+html {
+    scrollbar-width: none;
+}
+
+/* Ukrycie paska przewijania dla Internet Explorera */
+body {
+    -ms-overflow-style: none;
+}
+
+.photo {
+    width: 90%;
+    max-width: 120px;
+    background: rgba(0, 0, 0, 0.9); /* Czarne tło z lekką przezroczystością */
+    padding: 9px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0px 0px 15px rgb(255, 0, 221); /* Delikatna poświata */
+    margin: 30px auto; /* Duży odstęp od innych sekcji */
+}
+
+/* Odtwarzacz muzyki */
+.music-player {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.music-player button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.music-player input[type="range"] {
+    width: 80px;
+    cursor: pointer;
+}
+
+/*blokowanie zaznaczania*/
+* {
+    user-select: none; /* Blokuje zaznaczanie tekstu */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+body {
+    pointer-events: auto; /* Pozwala klikać na stronie */
+}
+
+button, a, input, .clickable {
+    pointer-events: auto !important; /* Przywraca klikalność przycisków i linków */
+    cursor: pointer; /* Zmienia kursor na wskazujący */
+}
